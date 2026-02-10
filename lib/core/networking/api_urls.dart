@@ -1,16 +1,12 @@
 class ApiUrls {
-  
-  static const String baseUrl = '';
-  static const String imageUrl = '';
+  static const String baseUrl = 'https://dummyjson.com';
 
-  static const String login = '';
+  static const String login = '/auth/login';
+  static const String loginReqRes = 'https://reqres.in/api/login';
   static const String logOut = '';
 
   //users
-  static const String getUsers = '';
-  static const String getUserById = '';
-  static const String updateUser = '';
-
+  static const String getUsers = '/users';
 }
 
 class ApiErrors {

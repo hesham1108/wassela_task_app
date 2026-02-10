@@ -56,31 +56,32 @@ class ApiService {
     dynamic data,
     dynamic params,
     bool auth = true,
+    bool addLang = true,
+    bool isLogin = false,
   }) async {
     Map<String, dynamic>? headers;
     String? lang = await storage.readSecureData(AppConstants.langCode);
     // String deviceId = await storage.readSecureData(AppConstants.deviceId);
     // Map<String, dynamic>? extraBody;
     String token = '';
-    if (auth) {
-      token = await storage.readSecureData(AppConstants.tokenKey);
-      if (token.isNotEmpty) {
-        headers = {"Authorization": 'Bearer $token'};
-      } else {
-        // if (deviceId.isNotEmpty) {
-        //   extraBody = {
-        //     'device_id': deviceId,
-        //   };
-        // }
+    if (isLogin) {
+      headers = {"x-api-key": 'reqres_17bed19a60724f40ad684e71fc9f33be'};
+    } else {
+      if (auth) {
+        token = await storage.readSecureData(AppConstants.tokenKey);
+        if (token.isNotEmpty) {
+          headers = {"Authorization": 'Bearer $token'};
+        } 
+      }
+      if (addLang && data is Map<String, dynamic>?) {
+        data = {
+          if (data != null) ...data,
+          // if (deviceId.isNotEmpty && extraBody != null) ...extraBody,
+          'lang': lang.isNotEmpty ? lang : 'ar',
+        };
       }
     }
-    if (data is Map<String, dynamic>?) {
-      data = {
-        if (data != null) ...data,
-        // if (deviceId.isNotEmpty && extraBody != null) ...extraBody,
-        'lang': lang.isNotEmpty ? lang : 'ar',
-      };
-    }
+
     var response = await dio.post(
       endPoint,
       data: data,
@@ -90,12 +91,21 @@ class ApiService {
     return response;
   }
 
-  Future<Response> put({required String endPoint}) async {
-    var token = await storage.readSecureData(AppConstants.tokenKey);
+  Future<Response> put({
+    required String endPoint,
+    dynamic data,
+    bool auth = true,
+  }) async {
+    Map<String, dynamic>? headers;
+    if (auth) {
+      var token = await storage.readSecureData(AppConstants.tokenKey);
+      headers = {"Authorization": 'Bearer $token'};
+    }
 
     var response = await dio.put(
       endPoint,
-      options: Options(headers: {"Authorization": 'Bearer $token'}),
+      data: data,
+      options: Options(headers: headers),
     );
     return response;
   }
