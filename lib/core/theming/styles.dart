@@ -200,6 +200,12 @@ class TextStyles {
     color: Colors.black,
     fontFamily: 'DIN',
   );
+  static TextStyle font20BlackExtraBold = TextStyle(
+    fontSize: 20.sp,
+    fontWeight: FontWeightHelper.extraBold,
+    color: Colors.black,
+    fontFamily: 'DIN',
+  );
   static TextStyle font21BlackRegular = TextStyle(
     fontSize: 21.sp,
     fontWeight: FontWeightHelper.regular,
@@ -370,6 +376,13 @@ class TextStyles {
     fontSize: 18.sp,
     fontWeight: FontWeightHelper.medium,
     color: ColorsManager.gray2,
+    fontFamily: 'DIN',
+  );
+
+  static TextStyle font14GreyRegular = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: Colors.grey,
     fontFamily: 'DIN',
   );
 
