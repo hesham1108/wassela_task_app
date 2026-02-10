@@ -22,19 +22,21 @@ class _SplashScreenState extends State<SplashScreen>
   Future<void> checkIfUserLogged() async {
     await Future.delayed(const Duration(seconds: 2), () async {
       bool isUserLogged = await context.read<SplashCubit>().checkIfUserLogged();
-    
+
       goTo(isUserLogged);
     });
   }
 
- void goTo(bool isUserLogged) {
+  void goTo(bool isUserLogged) {
     if (isUserLogged) {
-      context.pushReplacementNamed(
-        Routes.loginScreen,//users screen
+      context.pushNamedAndRemoveUntil(
+        Routes.allUsersScreen,
+        predicate: (route) => false,
       );
     } else {
-      context.pushReplacementNamed(
+      context.pushNamedAndRemoveUntil(
         Routes.loginScreen,
+        predicate: (route) => false,
       );
     }
   }
@@ -90,7 +92,7 @@ class _SplashScreenState extends State<SplashScreen>
                       child: Center(
                         child: Image.asset(AssetsConstants.fullLogo),
                       ),
-                    ), 
+                    ),
                   );
                 },
               ),
