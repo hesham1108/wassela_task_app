@@ -1,4 +1,3 @@
-
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:wassela_task_app/core/helpers/local_storage.dart';
@@ -9,8 +8,9 @@ import 'package:wassela_task_app/features/auth/data/datasource/auth_remote_datas
 import 'package:wassela_task_app/features/auth/data/repo/auth_repo_impl.dart';
 import 'package:wassela_task_app/features/auth/presentation/logic/auth_cubit.dart';
 import 'package:wassela_task_app/features/splash/presentation/logic/splash_cubit.dart';
-
-
+import 'package:wassela_task_app/features/users/data/datasource/users_remote_datasource.dart';
+import 'package:wassela_task_app/features/users/data/repo/users_repo_impl.dart';
+import 'package:wassela_task_app/features/users/presentation/logic/users_cubit.dart';
 
 final getIt = GetIt.instance;
 
@@ -27,7 +27,6 @@ Future<void> setupGetIt() async {
   //splash
   getIt.registerFactory<SplashCubit>(() => SplashCubit(localStorage: storage));
 
-  
   //auth
   getIt.registerLazySingleton<AuthRemoteDatasource>(
     () => AuthRemoteDatasource(apiService: getIt()),
@@ -41,4 +40,14 @@ Future<void> setupGetIt() async {
     () => AuthCubit(authRepoImpl: getIt(), storage: getIt()),
   );
 
+  //users
+  getIt.registerLazySingleton<UsersRemoteDatasource>(
+    () => UsersRemoteDatasource(apiService: getIt()),
+  );
+
+  getIt.registerLazySingleton<UsersRepoImpl>(
+    () => UsersRepoImpl(usersRemoteDatasource: getIt()),
+  );
+
+  getIt.registerFactory<UsersCubit>(() => UsersCubit(usersRepoImpl: getIt()));
 }

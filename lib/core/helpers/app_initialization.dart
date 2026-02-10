@@ -14,6 +14,7 @@ GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 Future<void> appInitialization() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
   Bloc.observer = MyBlocObserver();
   await setupGetIt();
   Locale startLocal = const Locale('en', 'US');
@@ -36,7 +37,6 @@ Future<void> appInitialization() async {
       startLocale: startLocal,
       useOnlyLangCode: true,
       child: MyApp(),
-     
     ),
   );
 }
