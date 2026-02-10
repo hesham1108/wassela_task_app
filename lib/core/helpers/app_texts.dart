@@ -26,4 +26,42 @@ class AppTexts {
   static String get login => "Login".tr();
   // errors
   static String get serverErrorMessage => "server_error_message".tr();
+
+  // ── Users Feature ──
+  static String get users => "users".tr();
+  static String get userDetails => "user_details".tr();
+  static String get edit => "edit".tr();
+  static String get editUser => "edit_user".tr();
+  static String get firstName => "first_name".tr();
+  static String get lastName => "last_name".tr();
+  static String get email => "email".tr();
+  static String get password => "password".tr();
+  static String get logIn => "log_in".tr();
+  static String get phone => "phone".tr();
+  static String get age => "age".tr();
+  static String get university => "university".tr();
+  static String get company => "company".tr();
+  static String get department => "department".tr();
+  static String get address => "address".tr();
+  static String get retry => "retry".tr();
+  static String get noUsersFound => "no_users_found".tr();
+  static String get loadingUsers => "loading_users".tr();
+  static String get errorLoadingUsers => "error_loading_users".tr();
+  static String get updateSuccess => "update_success".tr();
+  static String get updatingUser => "updating_user".tr();
+  static String get enterFirstName => "enter_first_name".tr();
+  static String get enterLastName => "enter_last_name".tr();
+  static String get enterEmail => "enter_email".tr();
+  static String get enterPassword => "enter_password".tr();
+  static String get birthDate => "birth_date".tr();
+  static String get gender => "gender".tr();
+  static String get personalInfo => "personal_info".tr();
+  static String get username => "username".tr();
+  static String get enterValidEmail => "enter_valid_email".tr();
+
+  // ── Settings Feature ──
+  static String get settings => "settings".tr();
+  static String get language => "language".tr();
+  static String get changeLanguage => "change_language".tr();
+  static String get confirmLogout => "confirm_logout".tr();
 }
