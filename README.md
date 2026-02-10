@@ -116,7 +116,7 @@ The app uses **ReqRes.in** for authentication. Use these credentials to log in:
 
 1.  **Clone the repository**:
     ```bash
-    git clone https://github.com/your-username/wassela_task_app.git
+    git clone https://github.com/hesham1108/wassela_task_app.git
     ```
 
 2.  **Navigate to project directory**:
